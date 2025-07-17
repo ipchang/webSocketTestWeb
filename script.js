@@ -28,7 +28,7 @@ ws.addEventListener('message', (message) => {
 		controlledByTD.value = val;
 	}
 
-	console.log(data);
+	console.log(val);
 });
 
 ws.addEventListener('error', (error) => {
