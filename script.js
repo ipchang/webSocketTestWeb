@@ -17,7 +17,7 @@ ws.addEventListener('open', (event) =>{
 });
 
 ws.addEventListener('message', (message) => {
-	if (messag.data == 'ping') {   //살아있나 그냥 체크
+	if (message.data == 'ping') {   //살아있나 그냥 체크
 		ws.send('pong');
 		return
 	}
