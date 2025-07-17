@@ -26,9 +26,9 @@ ws.addEventListener('message', (message) => {
 	if('slder1' in data) {
 		let val = data['slider1'];
 		controlledByTD.value = val;
+		console.log(val);
 	}
 
-	console.log(val);
 });
 
 ws.addEventListener('error', (error) => {
