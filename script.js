@@ -1,6 +1,8 @@
 let ws = new WebSocket('wss://socket-server-test.onrender.com/:443');
 
 let controlTD = document.querySelector('.controllTD');
+let controlledByTD = document.querySelector('.controlledByTD');
+
 controlTD.addEventListener('input', (event) => {
 	console.log(controlTD.value);
 	ws.send(JSON.stringify({'slider1': controlTD.value}));
@@ -15,6 +17,17 @@ ws.addEventListener('open', (event) =>{
 });
 
 ws.addEventListener('message', (message) => {
+	if (messag.data == 'ping') {   //살아있나 그냥 체크
+		ws.send('pong');
+		return
+	}
+
+	let data = JSON.parse(message.data); 
+	if('slder1' in data) {
+		let val = data['slider1'];
+		controlledByTD.value = val;
+	}
+
 	console.log(message);
 });
 
